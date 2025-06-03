@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f9fafb;
+            color: #333;
+        }
+
+        .top-bar {
+            background-color: #222;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .top-bar img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+            border: 2px solid #fff;
+        }
+
+        .dashboard-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .info-box {
+            background: white;
+            padding: 40px 50px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            max-width: 400px;
+            width: 100%;
+            transition: box-shadow 0.3s ease;
+        }
+        .info-box:hover {
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+        }
+
+        .info-box h2 {
+            margin-bottom: 20px;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: #222;
+        }
+
+        .info-box p {
+            font-size: 1.1rem;
+            margin: 12px 0;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        {% if image %}
+            <img src="{{ url_for('static', filename='uploads/' ~ image) }}" alt="Profile">
+        {% else %}
+            <img src="{{ url_for('static', filename='default-profile.png') }}" alt="Default">
+        {% endif %}
+    </div>
+
+    <div class="dashboard-content">
+        <div class="info-box">
+            <h2>Welcome, {{ name }}!</h2>
+            <p><strong>Age:</strong> {{ age }}</p>
+            <p><strong>Address:</strong> {{ address }}</p>
+        </div>
+    </div>
+
+
+
+<div class="top-bar">
+  
+    <a href="{{ url_for('logout') }}" style="color: white; margin-left: 15px; text-decoration: none; font-weight: 600;">Logout</a>
+</div>
+
+
+</body>
+</html>
